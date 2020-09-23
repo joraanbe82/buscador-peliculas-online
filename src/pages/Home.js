@@ -1,34 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import { MoviesList } from '../components/MoviesList';
-import { SearchForm } from '../components/SearchForm';
-import { Title } from '../components/Title';
+import { MoviesList } from '../components/MoviesList'
+import { SearchForm } from '../components/SearchForm'
+import { Title } from '../components/Title'
 
 export class Home extends Component {
-  state = { usedSearch: false, results: [] };
+  state = { usedSearch: false, results: [] }
 
-  _handleResults = (results) => {
-    this.setState({ results, usedSearch: true });
-  };
+  _handleResults = results => {
+    this.setState({ results, usedSearch: true })
+  }
 
   _renderResults() {
     return this.state.results.length === 0 ? (
       <p>
         Sorry!{' '}
-        <span role="img" aria-label="neutral">
+        <span role='img' aria-label='neutral'>
           😐
         </span>{' '}
         Results not found!{' '}
       </p>
     ) : (
       <MoviesList movies={this.state.results} />
-    );
+    )
   }
   render() {
     return (
       <div>
         <Title>Search Movies</Title>
-        <div className="SearchForm-wrapper">
+        <div className='SearchForm-wrapper'>
           <SearchForm onResults={this._handleResults} />
         </div>
         {this.state.usedSearch ? (
@@ -37,6 +37,6 @@ export class Home extends Component {
           <small>Use the form to search a movie</small>
         )}
       </div>
-    );
+    )
   }
 }
